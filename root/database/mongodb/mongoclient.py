@@ -23,17 +23,26 @@ class MongoClientWrapper():
 
     
     def read(self, query, collection_name):
+        """
+        Read documents from mongo
+        """
         collection = self.db[collection_name]
         result = collection.find(query)
         return result
 
 
     def write(self, data, collection_name):
+        """
+        Insertion of new data
+        """
         collection = self.db[collection_name]
         result = collection.insert_one(data)
         return result.inserted_id, result.acknowledged
     
     def update(self, query, data, collection_name ):
+        """
+        Updates existing records
+        """
         collection = self.db[collection_name]
         result = collection.update_one(query, data)
         return result
