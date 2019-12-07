@@ -1,16 +1,18 @@
-# Load scikit's random forest classifier library
-from sklearn.ensemble import RandomForestClassifier
-# Load pandas
-import pandas as pd
-# Load numpy
-import numpy as np
+from root.models.main import start_train
+from root.models.main import run_inference
 
-data = {'countrycode': ['CHN', 'CHN', 'CHN', 'FRA', 'FRA', 'FRA'],
-        'pop': [1124.8, 1246.8, 1318.2, 58.2, 60.8, 64.7],
-        'rgdpe': [2.611, 4.951, 11.106, 1.294, 1.753, 2.032],
-        'year': [1990, 2000, 2010, 1990, 2000, 2010]}
+training_data_input_path = 'dummy.data'
+model_save_path = 'old_user_classifier_model.sav'
 
-df = pd.DataFrame(data)
 
-def test():
-    print(df)
+def model_train():
+	start_train(training_data_input_path, model_save_path)
+
+
+def run_model_inference():
+	input_data = [[12.9729803, 77.6295003, 1124.8, 2500, 10]]
+	run_inference(input_data, model_save_path)
+
+
+# model_train()
+run_model_inference()
