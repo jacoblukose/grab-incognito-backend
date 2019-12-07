@@ -1,0 +1,4 @@
+mongo:
+  - connection_url: localhost
+  - connection_port: 27017
+  - default_db: my
