@@ -1,7 +1,7 @@
 from root.models.main import start_train
 from root.models.main import run_inference
 
-training_data_input_path = 'dummy.data'
+training_data_input_path = 'dummy.csv'
 model_save_path = 'old_user_classifier_model.sav'
 
 
