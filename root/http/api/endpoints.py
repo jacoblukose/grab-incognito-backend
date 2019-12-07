@@ -1,9 +1,5 @@
 from flask import Flask
 from flask import jsonify
-# from models import test
-from root.database.models import test
-
-test()
 
 app = Flask(__name__)
 
