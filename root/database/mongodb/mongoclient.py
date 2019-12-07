@@ -24,23 +24,34 @@ class MongoClientWrapper():
     
     def read(self, query, collection_name):
         collection = self.db[collection_name]
-        result=collection.find(query)
+        result = collection.find(query)
         return result
 
 
     def write(self, data, collection_name):
         collection = self.db[collection_name]
-        result=collection.insert_one(data)
+        result = collection.insert_one(data)
         return result.inserted_id, result.acknowledged
     
-    def update():
-        pass
+    def update(self, query, data, collection_name ):
+        collection = self.db[collection_name]
+        result = collection.update_one(query, data)
+        return result
 
 
 m = MongoClientWrapper()
 
 # write query sample...
 # print(m.write({"name" : "Joe Drumgoole"}, 'user_test'))
+
+
+
+#update query sample...
+#BY DEFAULT ONLY ONE RECORD OUT OF MANY WILL BE UPDATED. For multiple need to use update_many()
+#https://www.w3schools.com/python/python_mongodb_update.asp
+# query = {'name':"Joe Drumgoole"}
+# newvalues = { "$set": { "address": "Canyon 123" } }
+# data = m.update(query, newvalues, 'user_test' ) #result is not iterable.. use a read query to check..
 
 # read query sample...
 # query = {'name':"Joe Drumgoole"}
