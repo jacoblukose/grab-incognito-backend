@@ -3,3 +3,5 @@
 pyvenv.cfg
 .vscode
 __pycache__
+root.egg-info
+react/*
