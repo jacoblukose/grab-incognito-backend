@@ -1,12 +1,21 @@
+import pandas as pd
 from root.models.main import start_train
 from root.models.main import run_inference
 
 training_data_input_path = 'dummy.csv'
 model_save_path = 'old_user_classifier_model.sav'
 
+def read_data(f):
+	"""
+	Read input data for training
+	"""
+	df = pd.read_csv(f)
+	print(df)
+	return df
 
 def model_train():
-	start_train(training_data_input_path, model_save_path)
+	df = read_data(training_data_input_path)
+	start_train(df, model_save_path)
 
 
 def run_model_inference():
@@ -14,5 +23,5 @@ def run_model_inference():
 	run_inference(input_data, model_save_path)
 
 
-# model_train()
-run_model_inference()
+model_train()
+# run_model_inference()

@@ -1,2 +1,9 @@
-age,location_langitude,location_longitude,gender,marital_status,occupation,bucket
-22,12.9729803,77.6295003,M,1,'software Developer','E3'
+age,location_langitude,location_longitude,gender,marital_status,occupation,buckets
+30,12.9729803,77.6295003,F,Y,unemployed,NE
+22,12.9729803,77.6295003,M,Y,senior software Developer,E3
+22,12.9729803,77.6295003,F,N,senior software Developer,E3
+22,12.9729803,77.6295003,M,N,software intern,E1
+18,12.9729803,77.6295003,M,N,student,NE
+18,12.9729803,77.6295003,F,N,student,NE
+40,12.9729803,77.6295003,M,N,unemployed,NE
+27,12.9729803,77.6295003,F,Y,office clerk,E2
