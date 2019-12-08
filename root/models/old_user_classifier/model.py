@@ -23,5 +23,5 @@ def run_model_inference():
 	run_inference(input_data, model_save_path)
 
 
-model_train()
+# model_train()
 # run_model_inference()
