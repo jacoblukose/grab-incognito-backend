@@ -1,9 +1,19 @@
-
+import time
 from pymongo import MongoClient
 
 USERS_MONGO_COLLECTION = 'user_test'
 REFFERAL_MONGO_COLLECTION = 'referral_test'
 MONGO_CONNECTION_URL = 'localhost:27017'
+
+# Singleton/SingletonDecorator.py
+class SingletonDecorator:
+    def __init__(self,klass):
+        self.klass = klass
+        self.instance = None
+    def __call__(self,*args,**kwds):
+        if self.instance == None:
+            self.instance = self.klass(*args,**kwds)
+        return self.instance
 
 class MongoClientWrapper():
     def __init__(self,host='',port=''):
@@ -27,7 +37,7 @@ class MongoClientWrapper():
         Read documents from mongo
         """
         collection = self.db[collection_name]
-        result = collection.find(query, {'_id': False})
+        result = collection.find(query)
         return result
 
 
@@ -47,13 +57,12 @@ class MongoClientWrapper():
         result = collection.update_one(query, data)
         return result
 
+m = SingletonDecorator(MongoClientWrapper)
 
-m = MongoClientWrapper()
+# m = MongoClientWrapper()
 
 # write query sample...
-print(MongoClientWrapper().write({"name" : "Jay Drumgoole"}, 'user_test'))
-
-
+# print(m.write({"name" : "Joe Drumgoole"}, 'user_test'))
 
 #update query sample...
 #BY DEFAULT ONLY ONE RECORD OUT OF MANY WILL BE UPDATED. For multiple need to use update_many()
