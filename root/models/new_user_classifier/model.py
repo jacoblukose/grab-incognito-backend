@@ -3,7 +3,7 @@ from root.models.main import start_train
 from root.models.main import run_inference
 from sklearn import preprocessing
 
-training_data_input_path = 'dummy.csv'
+training_data_input_path = 'root/models/new_user_classifier/dummy.csv'
 model_save_path = 'new_user_classifier_model.sav'
 
 def preprocess_data(df):
@@ -48,15 +48,18 @@ def model_train():
 	start_train(preprocessed_df, model_save_path)
 
 
-def run_model_inference():
-	input_data = [[22,12.9729803,77.6295003,'M','N','software intern']]
+def run_model_inference(input_):
+	# age, latitude, logituede, gender, marital status, occupation
+	input_data = [input_]
+	print(input_)
 	dfObj = pd.DataFrame(input_data)
+	print(dfObj)
 	#perform one hotting for input data
 	input_preprocessed = preprocess_data(dfObj)
 	# print(input_preprocessed)
-	run_inference(input_preprocessed, model_save_path)
+	return run_inference(input_preprocessed, model_save_path)
 
 
 
-model_train()
+# model_train()
 # run_model_inference()

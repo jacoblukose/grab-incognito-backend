@@ -27,7 +27,7 @@ class MongoClientWrapper():
         Read documents from mongo
         """
         collection = self.db[collection_name]
-        result = collection.find(query)
+        result = collection.find(query, {'_id': False})
         return result
 
 
@@ -51,7 +51,7 @@ class MongoClientWrapper():
 m = MongoClientWrapper()
 
 # write query sample...
-# print(m.write({"name" : "Joe Drumgoole"}, 'user_test'))
+print(MongoClientWrapper().write({"name" : "Jay Drumgoole"}, 'user_test'))
 
 
 
